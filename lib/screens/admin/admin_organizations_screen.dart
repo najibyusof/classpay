@@ -44,7 +44,16 @@ class _AdminOrganizationsScreenState
         title: const Text('Organizations'),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => context.push('/admin/organizations/new'),
+        onPressed: () async {
+          final message = await context.push<String>(
+            '/admin/organizations/new',
+          );
+          if (!mounted || message == null) return;
+          ref.invalidate(organizationsProvider(_filter));
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(message)));
+        },
         icon: const Icon(Icons.add),
         label: const Text('Add'),
       ),

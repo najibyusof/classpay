@@ -44,8 +44,16 @@ class _OrganizationDetail extends ConsumerWidget {
         IconButton(
           tooltip: 'Edit organization',
           icon: const Icon(Icons.edit_outlined),
-          onPressed: () =>
-              context.push('/admin/organizations/${organization.id}/edit'),
+          onPressed: () async {
+            final message = await context.push<String>(
+              '/admin/organizations/${organization.id}/edit',
+            );
+            if (!context.mounted || message == null) return;
+            ref.invalidate(organizationProvider(organization.id));
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text(message)));
+          },
         ),
       ],
     ),
@@ -125,7 +133,12 @@ class _OrganizationDetail extends ConsumerWidget {
               await ref
                   .read(organizationRepositoryProvider)
                   .delete(organization.id);
-              if (context.mounted) context.go('/admin/organizations');
+              if (context.mounted) {
+                context.go('/admin/organizations');
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Organization deleted')),
+                );
+              }
             } on Exception catch (error) {
               if (context.mounted)
                 ScaffoldMessenger.of(

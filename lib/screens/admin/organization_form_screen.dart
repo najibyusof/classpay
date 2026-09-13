@@ -86,7 +86,13 @@ class _OrganizationFormState extends ConsumerState<_OrganizationForm> {
       } else {
         await repository.update(organization);
       }
-      if (mounted) Navigator.of(context).pop();
+      if (mounted) {
+        Navigator.of(context).pop(
+          widget.organization == null
+              ? 'Organization added'
+              : 'Organization updated',
+        );
+      }
     } on ApiException catch (error) {
       if (mounted) setState(() => _error = error);
     } finally {
