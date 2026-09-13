@@ -3,6 +3,7 @@ import 'package:classpay/core/errors/api_exception.dart';
 import 'package:classpay/core/utils/currency_formatter.dart';
 import 'package:classpay/core/widgets/app_button.dart';
 import 'package:classpay/core/widgets/async_states.dart';
+import 'package:classpay/core/widgets/dashboard_back_button.dart';
 import 'package:classpay/models/participant_payment.dart';
 import 'package:classpay/providers/participant_payment_provider.dart';
 import 'package:classpay/repositories/participant_payment_repository.dart';
@@ -16,7 +17,10 @@ class PaymentSchedulesScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final data = ref.watch(paymentSchedulesProvider(role));
     return Scaffold(
-      appBar: AppBar(title: const Text('Payment schedules')),
+      appBar: AppBar(
+        leading: const DashboardBackButton(),
+        title: const Text('Payment schedules'),
+      ),
       body: data.when(
         loading: () => const AppLoadingIndicator(),
         error: (error, stack) => AppErrorState(
@@ -74,7 +78,10 @@ class PaymentScheduleDetailScreen extends ConsumerWidget {
         error: (error, stack) =>
             Scaffold(body: AppErrorState(message: apiErrorMessage(error))),
         data: (schedule) => Scaffold(
-          appBar: AppBar(title: const Text('Payment schedule')),
+          appBar: AppBar(
+            leading: const DashboardBackButton(),
+            title: const Text('Payment schedule'),
+          ),
           body: ListView(
             padding: const EdgeInsets.all(16),
             children: [
@@ -182,7 +189,10 @@ class _MakePaymentScreenState extends ConsumerState<MakePaymentScreen> {
   Widget build(BuildContext context) {
     final options = widget.schedule.options;
     return Scaffold(
-      appBar: AppBar(title: const Text('Make payment')),
+      appBar: AppBar(
+        leading: const DashboardBackButton(),
+        title: const Text('Make payment'),
+      ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
@@ -294,7 +304,10 @@ class PaymentConfirmationScreen extends StatelessWidget {
   final String paymentMethod;
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: const Text('Confirm payment')),
+    appBar: AppBar(
+      leading: const DashboardBackButton(),
+      title: const Text('Confirm payment'),
+    ),
     body: Center(child: Text('${schedule.className}\n$paymentMethod')),
   );
 }
@@ -312,7 +325,10 @@ class PaymentResultScreen extends StatelessWidget {
         payment.status == 'bank_transfer' ||
         payment.status == 'qr';
     return Scaffold(
-      appBar: AppBar(title: const Text('Payment result')),
+      appBar: AppBar(
+        leading: const DashboardBackButton(),
+        title: const Text('Payment result'),
+      ),
       body: AppEmptyState(
         title: initiated
             ? 'Payment initiated'

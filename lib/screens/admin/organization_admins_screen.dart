@@ -1,6 +1,7 @@
 import 'package:classpay/core/errors/api_error_message.dart';
 import 'package:classpay/core/errors/api_exception.dart';
 import 'package:classpay/core/widgets/async_states.dart';
+import 'package:classpay/core/widgets/dashboard_back_button.dart';
 import 'package:classpay/models/organization.dart';
 import 'package:classpay/providers/organization_provider.dart';
 import 'package:classpay/repositories/organization_repository.dart';
@@ -17,7 +18,10 @@ class OrganizationAdminsScreen extends ConsumerWidget {
       organizationAdministratorsProvider(organizationId),
     );
     return Scaffold(
-      appBar: AppBar(title: const Text('Organization administrators')),
+      appBar: AppBar(
+        leading: const DashboardBackButton(),
+        title: const Text('Organization administrators'),
+      ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => _addAdministrator(context, ref),
         icon: const Icon(Icons.person_add_alt_1),

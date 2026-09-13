@@ -3,6 +3,7 @@ import 'package:classpay/core/errors/api_exception.dart';
 import 'package:classpay/core/widgets/app_button.dart';
 import 'package:classpay/core/widgets/app_text_field.dart';
 import 'package:classpay/core/widgets/async_states.dart';
+import 'package:classpay/core/widgets/dashboard_back_button.dart';
 import 'package:classpay/models/class_record.dart';
 import 'package:classpay/providers/class_provider.dart';
 import 'package:classpay/repositories/class_repository.dart';
@@ -120,6 +121,7 @@ class _ClassFormState extends ConsumerState<_ClassForm> {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
+      leading: const DashboardBackButton(),
       title: Text(widget.classRecord == null ? 'Add class' : 'Edit class'),
     ),
     body: ListView(

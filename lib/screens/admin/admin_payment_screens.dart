@@ -1,6 +1,7 @@
 import 'package:classpay/core/errors/api_error_message.dart';
 import 'package:classpay/core/utils/currency_formatter.dart';
 import 'package:classpay/core/widgets/async_states.dart';
+import 'package:classpay/core/widgets/dashboard_back_button.dart';
 import 'package:classpay/models/participant_payment.dart';
 import 'package:classpay/providers/admin_payment_provider.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,10 @@ class AdminPaymentsScreen extends ConsumerWidget {
     const filter = AdminPaymentFilter();
     final data = ref.watch(adminPaymentsProvider(filter));
     return Scaffold(
-      appBar: AppBar(title: const Text('Payments')),
+      appBar: AppBar(
+        leading: const DashboardBackButton(),
+        title: const Text('Payments'),
+      ),
       body: data.when(
         loading: () => const AppLoadingIndicator(),
         error: (error, stack) => AppErrorState(message: apiErrorMessage(error)),
@@ -51,7 +55,10 @@ class AdminPaymentDetailScreen extends StatelessWidget {
   final ParticipantPayment payment;
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: const Text('Payment detail')),
+    appBar: AppBar(
+      leading: const DashboardBackButton(),
+      title: const Text('Payment detail'),
+    ),
     body: ListView(
       children: [
         ListTile(
@@ -78,7 +85,10 @@ class PaymentSummaryReportScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     const filter = AdminPaymentFilter();
     return Scaffold(
-      appBar: AppBar(title: const Text('Payment summary')),
+      appBar: AppBar(
+        leading: const DashboardBackButton(),
+        title: const Text('Payment summary'),
+      ),
       body: ref
           .watch(paymentSummaryReportProvider(filter))
           .when(
@@ -132,7 +142,10 @@ class OutstandingReportScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     const filter = AdminPaymentFilter();
     return Scaffold(
-      appBar: AppBar(title: const Text('Outstanding report')),
+      appBar: AppBar(
+        leading: const DashboardBackButton(),
+        title: const Text('Outstanding report'),
+      ),
       body: ref
           .watch(outstandingReportProvider(filter))
           .when(
@@ -163,7 +176,10 @@ class OverdueReportScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     const filter = AdminPaymentFilter();
     return Scaffold(
-      appBar: AppBar(title: const Text('Overdue report')),
+      appBar: AppBar(
+        leading: const DashboardBackButton(),
+        title: const Text('Overdue report'),
+      ),
       body: ref
           .watch(overdueReportProvider(filter))
           .when(

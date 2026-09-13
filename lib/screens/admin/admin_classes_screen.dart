@@ -1,5 +1,6 @@
 import 'package:classpay/core/errors/api_error_message.dart';
 import 'package:classpay/core/widgets/async_states.dart';
+import 'package:classpay/core/widgets/dashboard_back_button.dart';
 import 'package:classpay/providers/class_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -22,7 +23,10 @@ class _AdminClassesScreenState extends ConsumerState<AdminClassesScreen> {
     );
     final classes = ref.watch(classesProvider(filter));
     return Scaffold(
-      appBar: AppBar(title: const Text('Classes')),
+      appBar: AppBar(
+        leading: const DashboardBackButton(),
+        title: const Text('Classes'),
+      ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => context.push(
           '/admin/organizations/${widget.organizationId}/classes/new',

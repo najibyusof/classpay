@@ -3,6 +3,7 @@ import 'package:classpay/core/errors/api_exception.dart';
 import 'package:classpay/core/widgets/app_button.dart';
 import 'package:classpay/core/widgets/app_text_field.dart';
 import 'package:classpay/core/widgets/async_states.dart';
+import 'package:classpay/core/widgets/dashboard_back_button.dart';
 import 'package:classpay/models/organization.dart';
 import 'package:classpay/providers/organization_provider.dart';
 import 'package:classpay/repositories/organization_repository.dart';
@@ -96,6 +97,7 @@ class _OrganizationFormState extends ConsumerState<_OrganizationForm> {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
+      leading: const DashboardBackButton(),
       title: Text(
         widget.organization == null ? 'Add organization' : 'Edit organization',
       ),

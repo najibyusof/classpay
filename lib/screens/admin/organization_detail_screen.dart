@@ -1,6 +1,7 @@
 import 'package:classpay/core/errors/api_error_message.dart';
 import 'package:classpay/core/widgets/async_states.dart';
 import 'package:classpay/core/widgets/app_card.dart';
+import 'package:classpay/core/widgets/dashboard_back_button.dart';
 import 'package:classpay/models/organization.dart';
 import 'package:classpay/providers/organization_provider.dart';
 import 'package:classpay/repositories/organization_repository.dart';
@@ -37,6 +38,7 @@ class _OrganizationDetail extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) => Scaffold(
     appBar: AppBar(
+      leading: const DashboardBackButton(),
       title: Text(organization.name),
       actions: [
         IconButton(

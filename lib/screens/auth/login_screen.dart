@@ -1,4 +1,5 @@
 import 'package:classpay/core/widgets/app_button.dart';
+import 'package:classpay/core/widgets/app_brand.dart';
 import 'package:classpay/core/widgets/app_text_field.dart';
 import 'package:classpay/providers/session_manager.dart';
 import 'package:flutter/foundation.dart';
@@ -58,10 +59,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Text(
-                      'ClassPay',
-                      style: Theme.of(context).textTheme.headlineLarge,
-                    ),
+                    const AppBrand(logoSize: 64),
                     const SizedBox(height: 8),
                     Text(
                       'Sign in to manage your education payments.',

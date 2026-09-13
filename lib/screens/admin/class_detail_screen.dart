@@ -2,6 +2,7 @@ import 'package:classpay/core/errors/api_error_message.dart';
 import 'package:classpay/core/errors/api_exception.dart';
 import 'package:classpay/core/widgets/app_card.dart';
 import 'package:classpay/core/widgets/async_states.dart';
+import 'package:classpay/core/widgets/dashboard_back_button.dart';
 import 'package:classpay/models/class_record.dart';
 import 'package:classpay/providers/class_provider.dart';
 import 'package:classpay/repositories/class_repository.dart';
@@ -35,6 +36,7 @@ class _ClassDetail extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) => Scaffold(
     appBar: AppBar(
+      leading: const DashboardBackButton(),
       title: Text(classRecord.name),
       actions: [
         IconButton(

@@ -1,6 +1,7 @@
 import 'package:classpay/core/errors/api_error_message.dart';
 import 'package:classpay/core/errors/api_exception.dart';
 import 'package:classpay/core/widgets/async_states.dart';
+import 'package:classpay/core/widgets/dashboard_back_button.dart';
 import 'package:classpay/models/class_record.dart';
 import 'package:classpay/providers/class_provider.dart';
 import 'package:classpay/repositories/class_repository.dart';
@@ -14,7 +15,10 @@ class ClassScheduleScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final schedules = ref.watch(classSchedulesProvider(classId));
     return Scaffold(
-      appBar: AppBar(title: const Text('Class schedules')),
+      appBar: AppBar(
+        leading: const DashboardBackButton(),
+        title: const Text('Class schedules'),
+      ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => _editSchedule(context, ref),
         icon: const Icon(Icons.add),

@@ -1,4 +1,5 @@
 import 'package:classpay/models/auth_user.dart';
+import 'package:classpay/core/widgets/app_brand.dart';
 import 'package:classpay/core/widgets/participant_widgets.dart';
 import 'package:classpay/providers/session_manager.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +43,13 @@ class RoleNavigationDrawer extends ConsumerWidget {
       child: SafeArea(
         child: Column(
           children: [
-            const ListTile(title: Text('ClassPay')),
+            const Padding(
+              padding: EdgeInsets.fromLTRB(16, 16, 16, 12),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: AppBrand(logoSize: 40),
+              ),
+            ),
             for (final item in items)
               ListTile(
                 leading: Icon(item.$3),

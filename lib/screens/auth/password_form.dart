@@ -1,4 +1,5 @@
 import 'package:classpay/core/widgets/app_button.dart';
+import 'package:classpay/core/widgets/dashboard_back_button.dart';
 import 'package:classpay/core/widgets/app_text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -83,7 +84,10 @@ class _PasswordFormBodyState extends State<_PasswordFormBody> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: Text(widget.title)),
+    appBar: AppBar(
+      leading: const DashboardBackButton(),
+      title: Text(widget.title),
+    ),
     body: SafeArea(
       child: Center(
         child: SingleChildScrollView(

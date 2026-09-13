@@ -1,6 +1,7 @@
 import 'package:classpay/core/errors/api_error_message.dart';
 import 'package:classpay/core/utils/currency_formatter.dart';
 import 'package:classpay/core/widgets/async_states.dart';
+import 'package:classpay/core/widgets/dashboard_back_button.dart';
 import 'package:classpay/models/participant_payment.dart';
 import 'package:classpay/providers/participant_payment_provider.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ class _PaymentHistoryScreenState extends ConsumerState<PaymentHistoryScreen> {
     final history = ref.watch(paymentHistoryProvider(_filter));
     return Scaffold(
       appBar: AppBar(
+        leading: const DashboardBackButton(),
         actions: [
           IconButton(
             tooltip: 'Filter payments',
@@ -93,7 +95,10 @@ class PaymentDetailScreen extends ConsumerWidget {
         error: (error, stack) =>
             Scaffold(body: AppErrorState(message: apiErrorMessage(error))),
         data: (payment) => Scaffold(
-          appBar: AppBar(title: const Text('Payment detail')),
+          appBar: AppBar(
+            leading: const DashboardBackButton(),
+            title: const Text('Payment detail'),
+          ),
           body: ListView(
             padding: const EdgeInsets.all(16),
             children: [

@@ -1,6 +1,7 @@
 import 'package:classpay/core/errors/api_error_message.dart';
 import 'package:classpay/core/errors/api_exception.dart';
 import 'package:classpay/core/widgets/async_states.dart';
+import 'package:classpay/core/widgets/dashboard_back_button.dart';
 import 'package:classpay/core/widgets/notification_tile.dart';
 import 'package:classpay/models/app_notification.dart';
 import 'package:classpay/models/auth_user.dart';
@@ -25,6 +26,7 @@ class _NotificationsScreenState extends ConsumerState<NotificationsScreen> {
     final notifications = ref.watch(notificationsProvider(_filter));
     return Scaffold(
       appBar: AppBar(
+        leading: const DashboardBackButton(),
         title: const Text('Notifications'),
         actions: [
           IconButton(
@@ -153,7 +155,10 @@ class NotificationDetailScreen extends ConsumerWidget {
         error: (error, stack) =>
             Scaffold(body: AppErrorState(message: apiErrorMessage(error))),
         data: (notification) => Scaffold(
-          appBar: AppBar(title: const Text('Notification')),
+          appBar: AppBar(
+            leading: const DashboardBackButton(),
+            title: const Text('Notification'),
+          ),
           body: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(

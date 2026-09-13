@@ -1,6 +1,7 @@
 import 'package:classpay/core/errors/api_error_message.dart';
 import 'package:classpay/core/network/pagination.dart';
 import 'package:classpay/core/widgets/async_states.dart';
+import 'package:classpay/core/widgets/dashboard_back_button.dart';
 import 'package:classpay/models/organization.dart';
 import 'package:classpay/providers/organization_provider.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +39,10 @@ class _AdminOrganizationsScreenState
   Widget build(BuildContext context) {
     final organizations = ref.watch(organizationsProvider(_filter));
     return Scaffold(
-      appBar: AppBar(title: const Text('Organizations')),
+      appBar: AppBar(
+        leading: const DashboardBackButton(),
+        title: const Text('Organizations'),
+      ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => context.push('/admin/organizations/new'),
         icon: const Icon(Icons.add),

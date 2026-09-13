@@ -1,5 +1,6 @@
 import 'package:classpay/core/utils/currency_formatter.dart';
 import 'package:classpay/core/widgets/app_card.dart';
+import 'package:classpay/core/widgets/app_brand.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -7,7 +8,7 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: const Text('ClassPay')),
+    appBar: AppBar(title: const AppBrand(logoSize: 32)),
     body: SafeArea(
       child: Center(
         child: ConstrainedBox(
